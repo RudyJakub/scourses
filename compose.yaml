@@ -1,0 +1,30 @@
+services:
+  server:
+    restart: always
+    build:
+      context: ./app
+      target: dev
+    ports:
+      - 3000:3000
+      - 9229:9229
+    environment:
+      NODE_ENV: dev
+      POSTGRES_USER: sigma
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: sigma_db
+    depends_on:
+      - db
+    volumes:
+      - ./:/app
+  db:
+    image: postgres:14-alpine
+    ports:
+      - 5432:5432
+    volumes:
+      - sigma_db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=123
+      - POSTGRES_USER=sigma
+      - POSTGRES_DB=sigma_db
+volumes:
+  sigma_db:
