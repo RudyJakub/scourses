@@ -9,6 +9,14 @@ app.get('/', async (req: Request, res: Response) => {
   res.send('Welcome to Express & TypeScript Server');
 });
 
-app.listen(port, () => {
-  console.log(`Server is Fire at http://localhost:${port}`);
-});
+db
+.connect()
+.then(() => {
+    console.log("Connected to PostgreSQL")
+    app.listen(port, () => {
+      console.log(`Server is running at http://localhost:${port}`)
+    })
+})
+.catch((err) => {
+    console.error(err)
+})
