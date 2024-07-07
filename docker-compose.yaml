@@ -21,10 +21,8 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - sigma_db:/var/lib/postgresql/data
+      - ./database/postgres:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=123
       - POSTGRES_USER=sigma
       - POSTGRES_DB=sigma_db
-volumes:
-  sigma_db:
