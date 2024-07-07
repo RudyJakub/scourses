@@ -26,3 +26,5 @@ services:
       - POSTGRES_PASSWORD=123
       - POSTGRES_USER=sigma
       - POSTGRES_DB=sigma_db
+    expose:
+      - "5432"

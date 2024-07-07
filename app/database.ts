@@ -1,10 +1,19 @@
-import pg from 'pg'
+import { Client } from 'pg'
 
-const { Client } = pg
-const connString = "postgres://postgres:123@localhost:5432/course_db";
+const connString = "postgresql://sigma:123@db:5432/sigma_db";
 
-const db = new Client(connString)
+const db = new Client({
+    connectionString: connString
+})
 
-db.connect()
+db
+.connect()
+.then(() => {
+    console.log("Connected to PostgreSQL")
+})
+.catch((err) => {
+    console.error(err)
+})
+
 
 export default db
