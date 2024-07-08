@@ -2,3 +2,4 @@ commands.txt
 app/node_modules/
 app/dist/
 database/postgres/
+scripts.sql
